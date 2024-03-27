@@ -1,0 +1,28 @@
+.Finalcontact {
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+}
+.Finalcontact-bgimg {
+  /* width: 1050px; */
+  height: auto;
+  margin: 100px auto;
+  border-radius: 7px;
+}
+.cont-img img {
+  width: 100%;
+  height: 85%;
+  object-fit: contain;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.para {
+  width: 80%;
+  height: auto;
+  text-align: center;
+  text-shadow: 0.82px 0.96px 0.8px gray;
+  margin: 50px auto 0px;
+  box-shadow: 30px 16px 3px -6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-top: 1px solid black;
+}
