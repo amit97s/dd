@@ -42,7 +42,9 @@ const Header = () => {
         </section>
         <section className="hidden md:flex">
           <div>
-            <p className="font-custom font-medium">Bajrang Bagri Photography</p>
+            <p className="font-custom " style={{ fontSize: "23px" }}>
+              Bajrang Bagri Photography
+            </p>
           </div>
         </section>
         <section className="flex flex-col md:flex-row items-center  md:gap-10">
