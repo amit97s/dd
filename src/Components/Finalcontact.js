@@ -54,8 +54,8 @@ const Finalcontact = () => {
 
     if (Object.keys(errors).length === 0) {
       emailjs
-        .sendForm("service_p83jofu", "template_9itjkxc", form.current, {
-          publicKey: "Pk40EDkn6mr59FYbS",
+        .sendForm("service_r3xlgil", "template_9wn5rik", form.current, {
+          publicKey: "JAnqnWMR3mORHQGWm",
         })
 
         .then(
@@ -302,13 +302,13 @@ const Finalcontact = () => {
           </div>
 
           <div className="absolute  top-24 lg:top-52 left-0 p-3 w-full    lg:w-[44rem]">
-            <h1 className=" text-white text-xl sm:text-5xl font-semibold ">
+            <h1 className=" text-white text-xl sm:text-5xl font-semibold font-custom">
               Discover Your Ideal
             </h1>
-            <h1 className=" text-white text-xl sm:text-3xl ">
+            <h1 className=" text-white text-xl sm:text-3xl font-custom">
               WEDDING PHOTOGRAPHER {":)"}
             </h1>
-            <p className="text-white mt-4 sm:text-xl w-fit sm:w-[40rem] lg:w-10/12 ">
+            <p className="text-white mt-4 sm:text-xl w-fit sm:w-[40rem] lg:w-10/12 font-custom">
               Share your preferences with us, and we'll help you find the
               perfect wedding photographer to capture every moment beautifully.
               Tailored to your style and vision, let's collaborate to ensure

@@ -7,7 +7,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 const Footer = () => {
   const navigate = useNavigate();
   return (
-    <section className="bg-[#111111]  mt-3">
+    <section className="bg-[#111111]  mt-3 font-custom text-sm">
       <section className=" flex items-center justify-between px-5 py-14 mt-5">
         <div className="flex flex-col md:flex-row gap-4 items-center  no-underline text-white">
           <NavLink to={"/"} className={"text-white no-underline"}>
@@ -27,7 +27,7 @@ const Footer = () => {
             Contact
           </NavLink>
         </div>
-        <div className="flex gap-3 items-center text-white">
+        <div className="flex gap-3 items-center text-white text-sm">
           <FaFacebook size={25} className="hover:text-blue-700" />
           <FaInstagram
             size={25}

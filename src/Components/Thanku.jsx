@@ -5,7 +5,7 @@ export default function Thankyou() {
   const navigate = useNavigate()
   return (
     <>  
-      <div className="h-screen mt-10">
+      <div className=" mt-10">
         <div className="bg-white p-6 md:mx-auto">
           <div className="flex items-center justify-center">
             <img src={thankyouGif} alt="Thank you GIF" className="h-52" />

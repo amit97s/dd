@@ -9,7 +9,6 @@ import bimg24 from "../subassets/bagris images/New folder/wallpaper5.jpg";
 import bimg25 from "../subassets/bagris images/New folder/wallpaper6.jpg";
 import bimg26 from "../subassets/bagris images/New folder/wallpaper7.jpg";
 import bimg27 from "../subassets/bagris images/New folder/wallpaper8.jpg";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Activities from "./Activities";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
@@ -17,7 +16,7 @@ const Home = () => {
   const images = [
     { name: "pic-1", src: bimg11 },
     { name: "pic-2", src: bimg12 },
-    { name: "pic-3", src: bimg14 },
+    // { name: "pic-3", src: bimg14 },
     { name: "pic-4", src: bimg17 },
     { name: "pic-4", src: bimg23 },
     { name: "pic-4", src: bimg24 },
@@ -46,7 +45,10 @@ const Home = () => {
   }, [currentSlide, handleNext, handlePrev]);
   return (
     <>
-      <div className=" relative mx-auto overflow-hidden max-w-screen-xl -z-30">
+      <div
+        className=" relative mx-auto overflow-hidden max-w-screen-xl  "
+        style={{ zIndex: "-1" }}
+      >
         <div
           className=" w-full flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -59,28 +61,20 @@ const Home = () => {
               <img
                 src={image.src}
                 alt={image.name}
-                className="w-full h-60 sm:h-[35rem] object-cover -z-30"
+                className="w-full h-60 sm:h-[35rem] md:h-[40rem] object-cover -z-30"
               />
             </div>
           ))}
         </div>
-        <IoIosArrowBack
-          className="prev-button absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-color_gray  text-xl sm:text-2xl md:text-5xl"
-          onClick={handlePrev}
-        ></IoIosArrowBack>
-        <IoIosArrowForward
-          className="next-button absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-color_gray text-xl sm:text-2xl md:text-5xl"
-          onClick={handleNext}
-        ></IoIosArrowForward>
       </div>
       <div className="parents">
         ;
         <section className=" flex mt-10 flex-col md:flex-row justify-center items-center px-1 sm:px-20  gap-7 mb-20">
           <div>
-            <h2 className="heading">
+            <h2 className="font-custom heading ">
               Unveiling Timeless Stories Through My Lens
             </h2>
-            <p className="paragraph">
+            <p className="font-custom paragraph">
               "Discover a visual journey beyond the ordinary at.
               <br />
               Our lens doesn't just freeze moments; it distills the very essence

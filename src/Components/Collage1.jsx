@@ -221,14 +221,14 @@ function Collage1() {
   ];
   return (
       <div className="m-auto">
-        <div className="h-[20rem] w-450:h-[24rem] sm:h-[30rem] md:h-[40rem] m-auto mt-4">
+        <div className="h-[20rem] w-450:h-[24rem] sm:h-[30rem] md:h-[40rem] m-auto ">
           <img src={Bacakgr} alt="" className="w-[100%] h-[100%] object-cover" />
         </div>
         <div className="w-full text-red-950 text-center mt-10">
           {" "}
           <p className="text-3xl sm:text-5xl  font-custom ">My Stories</p>
         </div>
-        <div className="text-center m-10  text-xl sm:text-2xl font-custom">Karun</div>
+        <div className="text-center m-10  text-xl sm:text-2xl font-custom">Karan & Ritu</div>
         <div className="m-auto flex flex-wrap justify-center gap-y-1 max-w-screen-lg">
           {imagesmapp.map((colimg, index) => {
             return (
