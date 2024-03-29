@@ -40,8 +40,6 @@ const Footer = () => {
               )
             }
           />
-
-          <FaXTwitter size={25} className="hover:text-black" />
         </div>
       </section>
       <h1 className="text-center text-white text-base font-normal pb-5">

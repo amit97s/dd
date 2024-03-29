@@ -170,12 +170,13 @@ const Home = () => {
           </div>
         </section>
         <div className="quote">
-          <h2>
+          <h2 className="font-custom">
             "Through the lens of life, every moment is a masterpiece <br />
             waiting to be captured, painting the canvas
             <br /> of memories with the brushstrokes of light and shadow."
           </h2>
-          <span className="span">-</span> <p>Roland Barthes</p>
+          <span className="span">-</span>{" "}
+          <p className="font-custom">Roland Barthes</p>
         </div>
         <Activities />
         {/* <Header /> */}

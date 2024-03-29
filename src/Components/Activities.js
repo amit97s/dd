@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-// import { MdEmojiEvents } from "react-icons/md";
+import { PiInstagramLogoBold } from "react-icons/pi";
 import { activityImages } from "./ActivityImages";
-import { FcVideoCall } from "react-icons/fc";
 
 export default function Activities() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,14 +29,11 @@ export default function Activities() {
 
   return (
     <div className="mx-auto overflow-hidden max-w-screen-xl">
+      <div onClick={() => window.open("https://google.com", "_blank")}>
+        <PiInstagramLogoBold />
+      </div>
       <div className="mt-40 sm:mt-10 my-10 flex items-center justify-between flex-col w-320:flex-row ">
-        <h1 className="text-xl w-440:text-2xl font-semibold text-color_gray flex items-center gap-2">
-          <FcVideoCall
-            className="text-2xl w-440:text-4xl  text-red-600"
-            color="red"
-          />{" "}
-          My Activities{" "}
-        </h1>
+        <h1 className="text-xl w-440:text-2xl font-semibold text-color_gray flex items-center gap-2"></h1>
       </div>
       <main
         ref={containerRef}

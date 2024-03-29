@@ -3,6 +3,7 @@ import img from "../subassets/bagris images/New folder/_AJU1479.jpg";
 import { MdLocalPhone } from "react-icons/md";
 import callUs from "../assets/callus.png";
 import emailjs from "@emailjs/browser";
+import { useNavigate } from "react-router-dom";
 
 const Finalcontact = () => {
   const [name, setName] = useState("");
@@ -16,6 +17,8 @@ const Finalcontact = () => {
   const [preWedding, setPreWedding] = useState(false);
   const [error, setError] = useState({});
   const form = useRef();
+
+  const navigate = useNavigate();
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^(\+?\d{2})?\d{10}$/;
@@ -57,17 +60,18 @@ const Finalcontact = () => {
 
         .then(
           (result) => {
-            alert("Form submitted successfully!");
-            setName("");
-            setEmail("");
-            setPhone("");
-            setBudget("");
-            setCity("");
-            setMessage("");
-            setPreWedding(false);
-            setPostWedding(false);
-            setWedding(false);
-            console.log("SUCCESS!", result);
+            if (result?.status === 200) {
+              setName("");
+              setEmail("");
+              setPhone("");
+              setBudget("");
+              setCity("");
+              setMessage("");
+              setPreWedding(false);
+              setPostWedding(false);
+              setWedding(false);
+              navigate("/thankyou");
+            }
           },
           (error) => {
             if (error) {
