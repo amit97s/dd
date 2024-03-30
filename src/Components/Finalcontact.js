@@ -54,8 +54,8 @@ const Finalcontact = () => {
 
     if (Object.keys(errors).length === 0) {
       emailjs
-        .sendForm("service_r3xlgil", "template_9wn5rik", form.current, {
-          publicKey: "JAnqnWMR3mORHQGWm",
+        .sendForm("service_id14pw8", "template_w9zmuej", form.current, {
+          publicKey: "BkMgy4-edbWfjPuSS",
         })
 
         .then(
@@ -71,6 +71,7 @@ const Finalcontact = () => {
               setPostWedding(false);
               setWedding(false);
               navigate("/thankyou");
+              console.log(result);
             }
           },
           (error) => {
@@ -240,7 +241,7 @@ const Finalcontact = () => {
                   <input
                     type="checkbox"
                     id="preWedding"
-                    name="preWedding"
+                    name="pre_weeding"
                     checked={preWedding}
                     onChange={(event) => setPreWedding(event.target.checked)}
                   />
@@ -251,7 +252,7 @@ const Finalcontact = () => {
                   <input
                     type="checkbox"
                     id="postWedding"
-                    name="engagement shoot"
+                    name="engagement_shoot"
                     checked={postWedding}
                     onChange={(event) => setPostWedding(event.target.checked)}
                   />
@@ -262,7 +263,7 @@ const Finalcontact = () => {
                   <input
                     type="checkbox"
                     id="wedding"
-                    name="wedding shoot"
+                    name="wedding_shoot"
                     checked={wedding}
                     onChange={(event) => setWedding(event.target.checked)}
                   />
