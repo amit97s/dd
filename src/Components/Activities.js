@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { PiInstagramLogoBold } from "react-icons/pi";
+
 import { activityImages } from "./ActivityImages";
 
 export default function Activities() {
@@ -29,9 +29,7 @@ export default function Activities() {
 
   return (
     <div className="mx-auto overflow-hidden max-w-screen-xl">
-      <div onClick={() => window.open("https://google.com", "_blank")}>
-        <PiInstagramLogoBold />
-      </div>
+      <div></div>
       <div className="mt-40 sm:mt-10 my-10 flex items-center justify-between flex-col w-320:flex-row ">
         <h1 className="text-xl w-440:text-2xl font-semibold text-color_gray flex items-center gap-2"></h1>
       </div>
@@ -39,9 +37,12 @@ export default function Activities() {
         ref={containerRef}
         className="flex justify-start overflow-x-hidden overflow-y-hidden"
       >
-        <section className="flex gap-2">
+        <section className="flex gap-2 ">
           {activityImages.map((dtx, index) => (
-            <main key={index} className="min-w-[10rem] sm:min-w-[20rem]  ">
+            <main
+              key={index}
+              className="min-w-[10rem] sm:min-w-[20rem] overflow-hidden "
+            >
               <img
                 src={dtx.src}
                 alt={dtx.name}

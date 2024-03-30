@@ -54,8 +54,8 @@ const Finalcontact = () => {
 
     if (Object.keys(errors).length === 0) {
       emailjs
-        .sendForm("service_id14pw8", "template_w9zmuej", form.current, {
-          publicKey: "BkMgy4-edbWfjPuSS",
+        .sendForm("service_r3xlgil", "template_9wn5rik", form.current, {
+          publicKey: "JAnqnWMR3mORHQGWm",
         })
 
         .then(
@@ -86,7 +86,10 @@ const Finalcontact = () => {
 
   return (
     <>
-      <main className="mx-auto overflow-hidden max-w-screen-xl -z-10">
+      <main
+        className="mx-auto overflow-hidden max-w-screen-xl -z-50 mt-12"
+        style={{ zIndex: "-1" }}
+      >
         <div className="relative ">
           <img
             style={{ filter: "brightness(50%)" }}
@@ -241,7 +244,7 @@ const Finalcontact = () => {
                   <input
                     type="checkbox"
                     id="preWedding"
-                    name="pre_weeding"
+                    name="pre_wedding"
                     checked={preWedding}
                     onChange={(event) => setPreWedding(event.target.checked)}
                   />

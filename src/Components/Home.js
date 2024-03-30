@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./Home.css";
+import { PiInstagramLogoBold } from "react-icons/pi";
+import { SiFacebook } from "react-icons/si";
 import bimg11 from "../subassets/bagris images/New folder/wallpaper.jpg";
 import bimg12 from "../subassets/bagris images/New folder/wallpaper1.jpg";
 import bimg14 from "../subassets/bagris images/New folder/wallpaper2.jpg";
@@ -171,6 +173,30 @@ const Home = () => {
           </h2>
           <span className="span">-</span>{" "}
           <p className="font-custom">Roland Barthes</p>
+        </div>
+        <div className="text-center mt-52 w-450:mt-32 font-custom">
+          <h1 className="text-3xl ">Follow us </h1>
+          <div className="flex  justify-center mr-12">
+            {" "}
+            <PiInstagramLogoBold
+              className="mt-1 ml-8  text-3xl hover:cursor-pointer hover:scale-110"
+              onClick={() =>
+                window.open(
+                  "https://www.instagram.com/bajrang_bagri_photography/",
+                  "_blank"
+                )
+              }
+            />
+            <SiFacebook
+              className="mt-1 ml-3 text text-3xl hover:cursor-pointer hover:scale-110"
+              onClick={() =>
+                window.open(
+                  "https://www.facebook.com/profile.php?id=100063942240303",
+                  "_blank"
+                )
+              }
+            />
+          </div>
         </div>
         <Activities />
         {/* <Header /> */}
