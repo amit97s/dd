@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 import { FaFacebook } from "react-icons/fa";
-import { FaInstagram, FaXTwitter } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const navigate = useNavigate();
+
   return (
     <section className="bg-[#111111]  mt-3 font-custom text-sm">
       <section className=" flex items-center justify-between px-5 py-14 mt-5">
@@ -28,6 +29,13 @@ const Footer = () => {
           </NavLink>
         </div>
         <div className="flex gap-3 items-center text-white text-sm">
+          <button
+            onClick={() => navigate("/login")}
+            className=" bg-white text-slate-800 font-semibold rounded-sm p-2 flex items-center"
+          >
+            <div className="sm:hidden">Login</div>
+            <div className="hidden sm:flex">Login as admin</div>
+          </button>
           <FaFacebook size={25} className="hover:text-blue-700" />
           <FaInstagram
             size={25}

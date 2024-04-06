@@ -12,6 +12,7 @@ import Collage2 from "../Components/Collage2";
 import Collage3 from "../Components/Collage3";
 import Collage4 from "../Components/Collage4";
 import Thankyou from "../Components/Thanku";
+import Login from "../Components/Login";
 
 export default function Router() {
   return (
@@ -31,6 +32,9 @@ export default function Router() {
           <Route path="/photography" element={<Collage4 />}></Route>
           <Route path="/thankyou" element={<Thankyou />}></Route>
           <Route path="*" element={<PageNotFound />}></Route>
+          
+          <Route path="/login" element={<Login />}></Route>
+
         </Routes>
         <Footer />
       </BrowserRouter>

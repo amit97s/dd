@@ -199,14 +199,6 @@ const Home = () => {
           </div>
         </div>
         <Activities />
-        {/* <Header /> */}
-        {/* <Home /> */}
-        {/* <Portfolio /> */}
-        {/* <Aboutus /> */}
-        {/* <Portwed />/ */}
-        {/* <Porteng /> */}
-        {/* <Contactus /> */}
-        {/* <Finalcontact /> */}
       </div>
     </>
   );
