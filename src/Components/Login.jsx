@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import axios from "axios"
-import {ENV_CONFIG} from "../config/env_config"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+import { ENV_CONFIG } from "../config/env_config";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import Upload from "./Upload";
+import { useAuth } from "../context/auth";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const API_ENDPOINT =ENV_CONFIG.BASE_URL
+  const [auth, setAuth] = useAuth();
+
+  const navigate = useNavigate();
+  const API_ENDPOINT = ENV_CONFIG.BASE_URL;
+
   const handleLogin = async () => {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isEmailValid = regexEmail.test(email);
@@ -22,14 +29,36 @@ function Login() {
       return;
     }
     try {
-      const request =await axios.post(`${API_ENDPOINT}/user/login`,{email,password})
-      console.log(request);
-    } catch (error) {
-      if(error){
-        console.log("something went wrong",error.message)
+      const res = await axios.post(`${API_ENDPOINT}/user/login`, {
+        email,
+        password,
+      });
+      if (res.data.success) {
+        console.log(res.data.message);
+        setAuth({
+          ...auth,
+          // user: res.data.user,
+          token: res.data.token,
+        });
+        localStorage.setItem("authentication", JSON.stringify(res.data));
+        navigate("/dashboard/admin");
+      } else {
+        console.error(res.data.message);
       }
+    } catch (err) {
+      console.error(err.message);
     }
   };
+
+  // React.useEffect(() => {
+  //   const auth = localStorage.getItem("authentication");
+  //   if (auth) {
+  //     navigate("/");
+  //   } else {
+  //     navigate("/");
+  //   }
+  // }, []);
+
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-lg">
@@ -37,8 +66,8 @@ function Login() {
           className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
           onSubmit={(e) => e.preventDefault()}
         >
-          <p className="text-center text-lg font-medium">
-            Sign in to your account
+          <p className="text-center text-lg font-medium font-custom">
+            Login in to Bajrang Bagri
           </p>
 
           <div>
@@ -77,11 +106,11 @@ function Login() {
         </form>
       </div>
       <>
-      <AdminDashboard/>
-      <Upload/>
+        <AdminDashboard />
+        <Upload />
       </>
     </div>
   );
 }
 
-export default Login;
+export default Login;
