@@ -55,8 +55,6 @@ import assetimg51 from "../subassets/bagris images/amit manral/compressing click
 import assetimg52 from "../subassets/bagris images/amit manral/compressing click img/pic 52.jpg";
 import assetimg53 from "../subassets/bagris images/amit manral/compressing click img/pic 53.jpg";
 import assetimg54 from "../subassets/bagris images/amit manral/compressing click img/pic 54.jpg";
-// import assetimg55 from "../subassets/bagris images/amit manral/compressing click img/pic55.jpg";
-// import assetimg56 from "../subassets/bagris images/New folder/_AJU1479.jpg";
 function Collage1() {
   const imagesmapp = [
     {

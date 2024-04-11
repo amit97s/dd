@@ -75,14 +75,6 @@ const Portwed = () => {
             </div>
           ))}
         </div>
-        <IoIosArrowBack
-          className="prev-button absolute left-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-color_gray  text-xl sm:text-2xl md:text-5xl"
-          onClick={handlePrev}
-        ></IoIosArrowBack>
-        <IoIosArrowForward
-          className="next-button absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer text-color_gray text-xl sm:text-2xl md:text-5xl"
-          onClick={handleNext}
-        ></IoIosArrowForward>
       </div>
       <div className="bg-white p-4 mt-5  sm:p-20  flex items-center justify-center gap-10">
         <p className="w-full  sm:p-10 rounded-md bg-[#FFF6E1] shadow-lg">

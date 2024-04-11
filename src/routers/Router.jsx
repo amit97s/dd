@@ -16,6 +16,7 @@ import Login from "../Components/Login";
 import AdminRoute from "./AdminRoute";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import Upload from "../Components/Upload";
+import ImagePreview from "../pages/admin/ImagePreview";
 
 export default function Router() {
   return (
@@ -39,9 +40,8 @@ export default function Router() {
           <Route path="/login" element={<Login />}></Route>
 
           <Route path="/dashboard" element={<AdminRoute />}>
-            <Route path="admin" element={<AdminDashboard />}>
-              <Route path="admin/images" element={<>images</>}></Route>
-            </Route>
+            <Route path="admin" element={<AdminDashboard />}></Route>
+            <Route path="images" element={<ImagePreview />}></Route>
           </Route>
         </Routes>
 

@@ -1,32 +1,23 @@
 import { useState, useEffect, useRef } from "react";
-
 import { activityImages } from "./ActivityImages";
-
 export default function Activities() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
-
   useEffect(() => {
     const container = containerRef.current;
-
     const intervalId = setInterval(() => {
       const nextScrollPosition = (currentIndex + 1) * 200;
-
       const maxScrollWidth = container.scrollWidth - container.clientWidth;
       const updatedScrollPosition =
         nextScrollPosition > maxScrollWidth ? 0 : nextScrollPosition;
-
       container.scrollTo({
         left: updatedScrollPosition,
         behavior: "smooth",
       });
-
       setCurrentIndex((prevIndex) => (prevIndex + 1) % activityImages.length);
     }, 2000);
-
     return () => clearInterval(intervalId);
   }, [currentIndex]);
-
   return (
     <div className="mx-auto overflow-hidden max-w-screen-xl">
       <div></div>

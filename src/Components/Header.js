@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { RiMenu3Line } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [toggle, setToggle] = useState(true);
+
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setToggle(!toggle);
@@ -17,7 +20,12 @@ const Header = () => {
     <div style={{ zIndex: "100000" }}>
       <div className="md:hidden flex items-center justify-between px-3 py-4 vb  z-50">
         <div>
-          <p className="font-custom font-medium ">Bajrang Bagri Photography</p>
+          <p
+            className="font-custom font-medium cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            Bajrang Bagri Photography
+          </p>
         </div>
         <section
           className="md:hidden flex items-center text-lg cursor-pointer z-[10000]"
@@ -49,7 +57,11 @@ const Header = () => {
         </section>
         <section className="hidden md:flex">
           <div>
-            <p className="font-custom " style={{ fontSize: "20px" }}>
+            <p
+              className="font-custom cursor-pointer"
+              onClick={() => navigate("/")}
+              style={{ fontSize: "20px" }}
+            >
               Bajrang Bagri Photography
             </p>
           </div>

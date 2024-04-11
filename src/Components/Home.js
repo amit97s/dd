@@ -5,27 +5,61 @@ import { SiFacebook } from "react-icons/si";
 import bimg11 from "../subassets/bagris images/New folder/wallpaper.jpg";
 import bimg12 from "../subassets/bagris images/New folder/wallpaper1.jpg";
 import bimg14 from "../subassets/bagris images/New folder/wallpaper2.jpg";
-import bimg17 from "../subassets/bagris images/New folder/wallpaper3.jpg";
+
 import bimg23 from "../subassets/bagris images/New folder/wallpaper4.jpg";
-import bimg24 from "../subassets/bagris images/New folder/wallpaper5.jpg";
+
 import bimg25 from "../subassets/bagris images/New folder/wallpaper6.jpg";
-import bimg26 from "../subassets/bagris images/New folder/wallpaper7.jpg";
-import bimg27 from "../subassets/bagris images/New folder/wallpaper8.jpg";
+
 import Activities from "./Activities";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/auth";
+import axios from "axios";
+import { ENV_CONFIG } from "../config/env_config";
+import Loader from "../Components/Loader";
+import LazyLoad from "react-lazyload";
+
 const Home = () => {
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [auth] = useAuth();
   const navigate = useNavigate();
-  const images = [
-    { name: "pic-1", src: bimg11 },
-    { name: "pic-2", src: bimg12 },
-    // { name: "pic-3", src: bimg14 },
-    { name: "pic-4", src: bimg17 },
-    { name: "pic-4", src: bimg23 },
-    { name: "pic-4", src: bimg24 },
-    { name: "pic-4", src: bimg25 },
-    { name: "pic-4", src: bimg26 },
-    { name: "pic-4", src: bimg27 },
-  ];
+
+  useEffect(() => {
+    const storedImages = localStorage.getItem("images");
+    if (storedImages) {
+      setImages(JSON.parse(storedImages));
+      setLoading(false);
+    }
+  }, []);
+
+  const fetchImages = async () => {
+    try {
+      const response = await axios.get(
+        `${ENV_CONFIG.BASE_URL}/image/get-images`,
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        }
+      );
+      if (response.data.success) {
+        setImages(response.data.images);
+
+        localStorage.setItem("images", JSON.stringify(response.data.images));
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error fetching images:", error);
+      setError("Failed to fetch images");
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handlePrev = useCallback(() => {
@@ -45,30 +79,39 @@ const Home = () => {
 
     return () => clearInterval(intervalId);
   }, [currentSlide, handleNext, handlePrev]);
+
   return (
     <>
-      <div
-        className=" relative mx-auto overflow-hidden max-w-screen-xl  "
-        style={{ zIndex: "-1" }}
-      >
+      {loading ? (
+        <Loader />
+      ) : (
         <div
-          className=" w-full flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          className="  relative mx-auto overflow-hidden max-w-screen-xl   "
+          style={{ zIndex: "-1" }}
         >
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="relative flex-shrink-0 w-full select-none object-cover"
-            >
-              <img
-                src={image.src}
-                alt={image.name}
-                className="w-full h-60 sm:h-[35rem] md:h-[40rem] object-cover -z-30"
-              />
-            </div>
-          ))}
+          <div
+            className=" w-full flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {images?.map((image) => {
+              return (
+                <section
+                  key={image?._id}
+                  className="relative flex-shrink-0 w-full select-none object-cover"
+                >
+                  <LazyLoad key={image?._id} height={200} once>
+                    <img
+                      src={image.imageData}
+                      alt={`Image ${image._id}`}
+                      className="w-full h-60 sm:h-[35rem] md:h-[40rem] object-cover -z-30"
+                    />
+                  </LazyLoad>
+                </section>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
       <div className="parents">
         ;
         <section className=" flex mt-10 flex-col md:flex-row justify-center items-center px-1 sm:px-20  gap-7 mb-20">
@@ -80,11 +123,13 @@ const Home = () => {
               "Discover a visual journey beyond the ordinary at.
               <br />
               Our lens doesn't just freeze moments; it distills the very essence
+              <br />
               of emotions, weaving a tapestry of stories in every frame.
               <br /> Embrace the art of storytelling through captivating
               imagery,
               <br />
               where each photograph is a portal to a cherished memory. Join us
+              <br />
               in celebrating life's extraordinary moments,
               <br /> beautifully encapsulated in pixels. Welcome to a world
               where passion <br />
@@ -205,5 +250,3 @@ const Home = () => {
 };
 
 export default Home;
-
-//

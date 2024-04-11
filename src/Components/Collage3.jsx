@@ -1,7 +1,6 @@
 import React from "react";
   import Bacakgr from "../subassets/bagris images/New folder/_AJU0756.jpg";
 import assetimg from "../subassets/bagris images/New folder/_AJU0440.jpg";
-// import assetimg1 from "../subassets/bagris images/_AJU0056-2.jpg";
 import assetimg2 from "../subassets/bagris images/New folder/_AJU0115.jpg";
 import assetimg3 from "../subassets/bagris images/New folder/_AJU0207.jpg"
 import assetimg4 from "../subassets/bagris images/New folder/_AJU0240-2.jpg"

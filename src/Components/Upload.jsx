@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ENV_CONFIG } from "../config/env_config";
 import { useAuth } from "../context/auth";
+import toast from 'react-hot-toast'
+import Loader from "./Loader";
 
 const Upload = () => {
   const [image, setImage] = useState();
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [auth] = useAuth();
 
   const API_ENDPOINT = ENV_CONFIG.BASE_URL;
@@ -14,13 +15,16 @@ const Upload = () => {
   const handleUpload = async (event) => {
     event.preventDefault();
 
+    if(!image) return;
+
     try {
       const imageData = new FormData();
-
       imageData.append("image", image);
 
+      setLoading(true); 
+
       const { data } = await axios.post(
-        `${API_ENDPOINT}/api/v1/product/create-product`,
+        `${API_ENDPOINT}/image/upload`,
         imageData,
         {
           headers: {
@@ -29,19 +33,28 @@ const Upload = () => {
           },
         }
       );
+
+      setLoading(false); 
+
       if (data.success) {
-        console.log("image added successfully", data.message);
+        toast.success("Image uploaded successfully");
+        setLoading(false)
+        
       } else {
         console.error("Some error", data?.message);
+        
       }
     } catch (err) {
-      console.error("Some error", err?.message);
+      toast.error(err?.response?.data?.message)
+
     }
   };
 
   return (
     <main className="mx-auto overflow-hidden max-w-screen-xl px-20 mt-10">
-      <div className="flex justify-center items-center h-64  border-2 border-dashed">
+      
+     <div>
+     <div className="flex justify-center items-center h-64  border-2 border-dashed">
         <input
           type="file"
           className="flex-col justify-center items-center  "
@@ -51,10 +64,14 @@ const Upload = () => {
 
       <button
         onClick={handleUpload}
-        className="w-full h-12 bg-blue-700 rounded-lg text-white mt-3 "
+        className="w-full flex h-12 bg-blue-700 rounded-lg text-white mt-3 items-center justify-center gap-2"
       >
-        Upload
+        <p className={`${loading ? 'hidden' : 'block'}`}>Upload</p> {loading? <>  <p>Uploading...</p> <Loader /></>  : ""}
       </button>
+
+    
+     </div>
+     
     </main>
   );
 };

@@ -105,10 +105,6 @@ function Login() {
           </button>
         </form>
       </div>
-      <>
-        <AdminDashboard />
-        <Upload />
-      </>
     </div>
   );
 }
